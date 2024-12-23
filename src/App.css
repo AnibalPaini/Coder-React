@@ -1,3 +1,30 @@
+:root{
+    --fontTitulo:"DM Serif Text", serif; /*Italic o Regular*/
+    --fontPrimaria:"Plus Jakarta Sans";
+    --colorPrimario:#33aec0
+}
+
+.fontP{
+    font-family: var(--fontPrimaria);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+  
+
+/* HEADER */
+.titulo{
+    font-family: var(--fontTitulo);
+    font-weight: 400;
+    font-style: italic;
+    color: #000;
+}
+.bg-header{
+    background-color: var(--colorPrimario);
+}
+
+/* FIN HEADER */
+
 .contenedor-carrito-img{
     transition: transform .2s;
 }
