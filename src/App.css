@@ -10,6 +10,9 @@
     font-weight: 600;
     font-style: normal;
 }
+.mt-10{
+    margin-top: 10rem;
+}
   
 
 /* HEADER */
@@ -35,3 +38,24 @@
 .contenedor-carrito-img:hover{
     transform: scale(1.1);
 }
+
+
+
+/* FOOTER */
+.footer{
+    max-height: 200px;
+}
+.img-logo{
+    width: 50px;
+    height: 50px;
+}
+.iconos{
+    color: #000;
+    font-size: 25px;
+    transition: all .2s;
+}
+.iconos:hover{
+    color: #1d1d1d;
+    transform: scale(1.1);
+}
+/* FIN FOOTER */
