@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <ItemListContainer producto="Remera"/>
+        <ItemListContainer/>
       <Footer/>
     </>
   )

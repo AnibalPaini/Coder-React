@@ -1,7 +1,11 @@
 :root{
     --fontTitulo:"DM Serif Text", serif; /*Italic o Regular*/
+    --fontTitulo1:"Atma", serif; 
     --fontPrimaria:"Plus Jakarta Sans";
     --colorPrimario:#33aec0
+}
+h1,h2,h3,h4,h5,p,label,input,a{
+    font-family: var(--fontPrimaria);
 }
 
 .fontP{
@@ -10,6 +14,7 @@
     font-weight: 600;
     font-style: normal;
 }
+
 .mt-10{
     margin-top: 10rem;
 }
@@ -17,8 +22,8 @@
 
 /* HEADER */
 .titulo{
-    font-family: var(--fontTitulo);
-    font-weight: 400;
+    font-family: var(--fontTitulo1);
+    font-weight: 500;
     font-style: italic;
     color: #000;
 }
@@ -39,6 +44,11 @@
     transform: scale(1.1);
 }
 
+/* productos */
+.img-product{
+    height: 400px;
+    object-fit: cover;
+}
 
 
 /* FOOTER */
