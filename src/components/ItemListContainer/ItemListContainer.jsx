@@ -12,7 +12,6 @@ function ItemListContainer({}) {
     .catch(error=>console.log(error))
   },[])
 
-
   return (
     <main className="container-sm mt-5">
         <h2 className='fontP'>Productos</h2>
