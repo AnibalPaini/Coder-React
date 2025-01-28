@@ -49,6 +49,20 @@ h1,h2,h3,h4,h5,p,label,input,a{
     height: 400px;
     object-fit: cover;
 }
+.img-detail{
+    width: 100%;
+    height: auto;
+}
+.botonesCount{
+    display: flex;
+    gap: 10px;
+}
+/* .contenedor-itemdetail{
+    width: 70%;
+}
+.contenedor-count{
+    width: 30%;
+} */
 
 
 /* FOOTER */
