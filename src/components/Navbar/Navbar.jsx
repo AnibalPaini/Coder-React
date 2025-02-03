@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <>
       <header className="container-fluid d-flex justify-content-between align-items-center px-5 py-3 border-bottom border-secondary">
-        <h1 className="h1 titulo">Camisetas MD</h1>
+        <Link to="/" className="tituloLink"><h1 className="h1 titulo">Camisetas MD</h1></Link>
         <nav className="d-flex gap-3 align-items-center">
           <ul className="nav gap-3">
             <li className="nav-item">
