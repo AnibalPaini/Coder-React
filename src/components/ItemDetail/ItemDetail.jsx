@@ -10,14 +10,14 @@ const ItemDetail = () => {
 
   useEffect(() => {
     getProductos()
-      .then((productos) => {
-        const productoEncontrado = productos.find(p => p.id === parseInt(id));
-        setProducto(productoEncontrado);
-      })
-      .catch(error => console.log(error));
+    .then((productos) => {
+      const productoEncontrado = productos.find(p => p.id === parseInt(id));
+      setProducto(productoEncontrado);
+    })
+    .catch(error => console.log(error));
   }, [id]);
 
-  if (!producto) return <p>Cargando...</p>;
+  if (!producto) return <p></p>;
 
   return (
     <div className="container mt-5">

@@ -147,27 +147,59 @@
         "stock": 10
         }
     ]
-    //https://mlu93kguowft.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://indumentarialegolf.com/wp-content/uploads/2024/11/IMG_20241031_124941-scaled.jpg
     //Exporta todos los productos
-    export const getProductos=(precioMinimo = 0, equipo = "")=>{
+    export const getProductos=(precioMinimo = 0, equipo = "",orden)=>{
         return new Promise((resolve)=>{
             setTimeout(()=>{
                 const filteredProducts = products
-                .filter(p => p.precio >= precioMinimo) // Filtrar por precio mínimo
-                .filter(p => equipo ? p.equipo.toLowerCase().includes(equipo.toLowerCase()) : true); // Filtrar por equipo si se proporciona
+                .filter(p => p.precio >= precioMinimo) 
+                .filter(p => equipo ? p.equipo.toLowerCase().includes(equipo.toLowerCase()) : true); 
                 resolve(filteredProducts);
-            },1000)
+                switch (orden) {
+                    case "A-Z":
+                        filteredProducts.sort((a, b) => a.titulo.localeCompare(b.titulo));
+                        break;
+                    case "Z-A":
+                        filteredProducts.sort((a, b) => b.titulo.localeCompare(a.titulo));
+                        break;
+                    case "Menor a Mayor":
+                        filteredProducts.sort((a, b) => a.precio - b.precio);
+                        break;
+                    case "Mayor a Menor":
+                        filteredProducts.sort((a, b) => b.precio - a.precio);
+                        break;
+                    default:
+                        break; 
+                }
+            },500)
         })
     }
 
     //Exporta productos por categoria
-    export const getProductosByCategory=(idCategoria)=>{
+    export const getProductosByCategory=(idCategoria,precioMinimo = 0, equipo = "",orden)=>{
         return new Promise((resolve)=>{
             setTimeout(()=>{
                 const filteredProductsByCategory= products.filter(p=>p.idCat===idCategoria)
                 .filter(p => p.precio >= precioMinimo) 
                 .filter(p => equipo ? p.equipo.toLowerCase().includes(equipo.toLowerCase()) : true); 
                 resolve(filteredProductsByCategory)
+                switch (orden) {
+                    case "A-Z":
+                        filteredProductsByCategory.sort((a, b) => a.titulo.localeCompare(b.titulo));
+                        break;
+                    case "Z-A":
+                        filteredProductsByCategory.sort((a, b) => b.titulo.localeCompare(a.titulo));
+                        break;
+                    case "Menor a Mayor":
+                        filteredProductsByCategory.sort((a, b) => a.precio - b.precio);
+                        break;
+                    case "Mayor a Menor":
+                        filteredProductsByCategory.sort((a, b) => b.precio - a.precio);
+                        break;
+                    default:
+                        break; 
+                }
             },500)
         })
     }
+
