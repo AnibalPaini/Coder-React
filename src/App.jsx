@@ -6,19 +6,24 @@ import Footer from "./components/Footer/Footer.jsx";
 import Home from "./components/Home/Home.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { CarritoProvider } from "./components/context/ContextoCarrito.jsx";
+import Contacto from "./components/Contacto/Contacto.jsx";
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<ItemListContainer />} />
-        <Route path="/productos/:id" element={<ItemDetail />} /> 
-        <Route path="/productos/categoria/:idCategoria" element={<ItemListContainer />} /> 
-      </Routes>
-      <Footer />
+      <CarritoProvider>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/productos" element={<ItemListContainer />} />
+            <Route path="/productos/:id" element={<ItemDetail />} /> 
+            <Route path="/productos/categoria/:idCategoria" element={<ItemListContainer />} /> 
+            <Route path="/contacto" element={<Contacto />} />
+          </Routes>
+          <Footer />
+      </CarritoProvider>
     </BrowserRouter>
   );
 }

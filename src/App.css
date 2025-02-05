@@ -60,6 +60,9 @@ h1,h2,h3,h4,h5,p,label,input,a{
     display: flex;
     gap: 10px;
 }
+.producto-destacado{
+    height: 100%;
+}
 /* .contenedor-itemdetail{
     width: 70%;
 }

@@ -29,7 +29,7 @@ function Navbar() {
             <li className="nav-item">
               <Link
                 className="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover"
-                to="/contactos"
+                to="/contacto"
               >
                 Contactos
               </Link>

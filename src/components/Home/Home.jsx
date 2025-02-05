@@ -3,8 +3,11 @@ import '../../App.css'
 import slide1 from "../../utiles/img/slide-1.png";
 import slide2 from "../../utiles/img/slide-2.png";
 import ProductosDestacados from "../ProductosDestacados/ProductosDestacados";
+import { getProductosMasVendidos } from "../../mock";
 
 const Home = () => {
+
+
   return (
     <>
       <div
@@ -26,14 +29,6 @@ const Home = () => {
               src={slide2}
               className="d-block w-100"
               alt="Slide 2"
-              style={{ width: "100%", height: "450px" }}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src={slide1}
-              className="d-block w-100"
-              alt="Slide 3"
               style={{ width: "100%", height: "450px" }}
             />
           </div>

@@ -3,10 +3,15 @@ import { useParams } from 'react-router-dom';
 import { getProductos } from '../../mock';
 import Count from '../Count/Count';
 import "../../app.css";
+import { ContextoCarrito } from '../context/ContextoCarrito';
+import { useContext } from 'react';
 
 const ItemDetail = () => {
   const { id } = useParams(); 
   const [producto, setProducto] = useState(null);
+
+  const {addToCart}= useContext(ContextoCarrito)
+  
 
   useEffect(() => {
     getProductos()
@@ -29,14 +34,14 @@ const ItemDetail = () => {
             className="img-fluid img-detail rounded shadow-sm" 
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mt-0">
           <h2 className="mb-4 text-dark fw-bold">{producto.titulo}</h2>
           <p className="text-secondary mb-3">{producto.descripcion}</p>
           <p className="mb-4 h5">
             <strong>Precio:</strong> ${producto.precio}
           </p>
           <div className="justify-content-start align-items-center">
-            <Count producto={producto} />
+            <Count producto={producto}/>
           </div>
         </div>
       </div>
