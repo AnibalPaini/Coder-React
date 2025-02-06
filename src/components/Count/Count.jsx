@@ -13,7 +13,8 @@ const Count = ({producto}) => {
         const item = {
             id: producto.id,
             titulo: producto.titulo,
-            precio: producto.precio
+            precio: producto.precio,
+            img:producto.imagenes
         };
 
         addToCart(item, cantidad); 

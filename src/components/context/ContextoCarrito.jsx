@@ -3,7 +3,10 @@ import { createContext, useState, useEffect } from "react";
 export const ContextoCarrito= createContext({
     carrito:[],
     total:0,
-    cantidadTotal:0
+    cantidadTotal:0,
+    isOpen:false,
+    toggleCart: () => {},
+    img:""
 })
 
 export const CarritoProvider=({children})=>{
@@ -11,16 +14,9 @@ export const CarritoProvider=({children})=>{
     const [carrito, setCarrito]=useState([]);
     const[total, setTotal]=useState(0);
     const[cantidadTotal, setCantidadTotal]=useState(0);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
-    useEffect(() => {
-        console.log("Carrito actualizado:", carrito);
-        console.log("Total actualizado:", total);
-        console.log("Cantidad total actualizada:", cantidadTotal);
-    }, [carrito, total, cantidadTotal]);
-    
-    
-
-    const addToCart=(item, cantidad)=>{ //Le pasamos el item y la cantidad
+    const addToCart=(item, cantidad, img)=>{ //Le pasamos el item y la cantidad
         const productoExiste= carrito.find(p=>p.item.id===item.id) //Busca si existe el producto 
         if(!productoExiste){//Si no existe los seteamos
             setCarrito(prev=>[...prev, {item, cantidad}])
@@ -36,6 +32,8 @@ export const CarritoProvider=({children})=>{
             setCantidadTotal(prev=>prev+cantidad)
             setTotal(prev=>prev+(item.precio* cantidad))
         }
+        console.log(img);
+        
     }
 
     /* 
@@ -55,11 +53,15 @@ export const CarritoProvider=({children})=>{
     const removeCart=()=>{
         setCarrito([])
         setTotal(0)
-        setCantidadTotal[0]
+        setCantidadTotal(0)
     }
 
+    const toggleCart = () => {
+        setIsCartOpen(!isCartOpen);
+    };
+
     return(
-        <ContextoCarrito.Provider value={{carrito, total, cantidadTotal,addToCart,deleteItem,removeCart}}>
+        <ContextoCarrito.Provider value={{carrito, total, cantidadTotal,addToCart,deleteItem,removeCart, isCartOpen, toggleCart}}>
             {children}
         </ContextoCarrito.Provider>
     )

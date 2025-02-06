@@ -89,3 +89,52 @@ h1,h2,h3,h4,h5,p,label,input,a{
     transform: scale(1.1);
 }
 /* FIN FOOTER */
+
+
+
+
+
+/* CARRITO */
+.cart-container {
+    right: -450px; 
+    width: 400px;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 100;
+}
+  
+.cart-container.open {
+    right: 0;
+}
+  
+.close-button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+}
+  
+.contenedor-carrito-img {
+    cursor: pointer;
+}
+
+.img-cart{
+    width: 150px;
+}
+
+.botones-carrito{
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    text-align: center;
+}
+  
+/* FIN CARRITO */
