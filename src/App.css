@@ -18,6 +18,10 @@ h1,h2,h3,h4,h5,p,label,input,a{
 .mt-10{
     margin-top: 10rem;
 }
+
+.link{
+    text-decoration: none;
+}
   
 
 /* HEADER */
@@ -62,6 +66,10 @@ h1,h2,h3,h4,h5,p,label,input,a{
 }
 .producto-destacado{
     height: 100%;
+}
+.back{
+    color: #000;
+    font-size: 30px;
 }
 /* .contenedor-itemdetail{
     width: 70%;
@@ -129,12 +137,22 @@ h1,h2,h3,h4,h5,p,label,input,a{
     width: 150px;
 }
 
-.botones-carrito{
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    align-items: center;
-    text-align: center;
+.botones-carrito {
+    width: 36px; 
+    height: 36px;
+    font-size: 18px; 
+    border-radius: 4px; 
+  }
+
+
+.incon-trash{
+    font-size: 1.5rem;
+    height: 5px;
+    cursor: pointer;
 }
+.incon-trash:hover{
+    transform: scale(1.1);
+}
+
   
 /* FIN CARRITO */

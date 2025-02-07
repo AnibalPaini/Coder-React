@@ -23,7 +23,7 @@ const ProductosDestacados = () => {
       <h2>Productos destacados</h2>
       <div className="row mt-5">
         {productos.map((p) => (
-          <div className="col-3 mb-4" key={p.id}>
+          <div className="col-12 col-sm-6 col-lg-3 mb-4" key={p.id}>
             <div className="card h-100">
               <img
                 src={p.imagenes[0] }

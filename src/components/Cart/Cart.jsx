@@ -18,7 +18,7 @@ const Cart = () => {
   return (
     <div className={`cart-container h-100 position-fixed top-0 overflow-auto ${isCartOpen ? "open" : ""}`}>
       <button className="close-button" onClick={toggleCart}>
-        X
+        <i class="bi bi-x-lg"></i>
       </button>
 
       {cantidadTotal === 0 ? (
@@ -34,7 +34,7 @@ const Cart = () => {
             <CartItem key={producto.item.id} {...producto} />
           ))}
           <h4>Total: ${total}</h4>
-          <button onClick={removeCart}>Eliminar carrito</button>
+          <button onClick={removeCart} className="btn btn-danger">Eliminar carrito</button>
         </>
       )}
     </div>

@@ -5,6 +5,7 @@ import Count from '../Count/Count';
 import "../../app.css";
 import { ContextoCarrito } from '../context/ContextoCarrito';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = () => {
   const { id } = useParams(); 
@@ -26,6 +27,11 @@ const ItemDetail = () => {
 
   return (
     <div className="container mt-5">
+      <Link to="/productos"
+        className='link'
+      >
+        <i class="bi bi-arrow-left-square back"></i>
+      </Link>
       <div className="row d-flex align-items-center justify-content-center">
         <div className="col-md-5 text-center">
           <img 
