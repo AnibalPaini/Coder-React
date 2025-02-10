@@ -9,9 +9,14 @@ import "./App.css";
 import { CarritoProvider } from "./components/context/ContextoCarrito.jsx";
 import Contacto from "./components/Contacto/Contacto.jsx";
 import Cart from "./components/Cart/Cart.jsx";
+import { useEffect } from "react";
+import { getItem } from "./firebase.js";
 
 
 function App() {
+  useEffect(()=>{
+    getItem();
+  },[])
   return (
     <BrowserRouter>
       <CarritoProvider>

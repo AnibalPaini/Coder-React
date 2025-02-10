@@ -52,7 +52,7 @@ const ProductosDestacados = () => {
           <div className="d-flex justify-content-center">
           <Link 
             to={`/productos`}
-            className="btn btn-dark w-25 mt-4"
+            className="btn btn-dark w-sm-50  mt-4"
           >
             Ver todos los productos
           </Link>
