@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductos } from '../../mock';
+/* import { getProductos } from '../../mock'; */
 import Count from '../Count/Count';
 import "../../app.css";
 import { ContextoCarrito } from '../context/ContextoCarrito';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {db} from "../../services/config.js"
+import {getDoc, doc} from "firebase/firestore";
 
 const ItemDetail = () => {
   const { id } = useParams(); 
@@ -13,17 +15,27 @@ const ItemDetail = () => {
 
   const {addToCart}= useContext(ContextoCarrito)
   
+  useEffect(()=>{
+    const nuevoDoc = doc(db,"productos",id)
+    getDoc(nuevoDoc)
+      .then(res=>{
+        const data=res.data();
+        const nuevoProducto={id: res.id, ...data}
+        setProducto(nuevoProducto);
+      })
+      .catch(error=>console.log(error))
+  },[id])
 
-  useEffect(() => {
+/*useEffect(() => {
     getProductos()
     .then((productos) => {
       const productoEncontrado = productos.find(p => p.id === parseInt(id));
       setProducto(productoEncontrado);
     })
     .catch(error => console.log(error));
-  }, [id]);
+  }, [id]); */
 
-  if (!producto) return <p></p>;
+  if (!producto) return <p>Cargando...</p>; 
 
   return (
     <div className="container mt-5">

@@ -34,7 +34,12 @@ const Cart = () => {
             <CartItem key={producto.item.id} {...producto} />
           ))}
           <h4>Total: ${total}</h4>
-          <button onClick={removeCart} className="btn btn-danger">Eliminar carrito</button>
+          <div className="d-flex gap-4">
+              <Link to={"/checkout"} className="btn btn-primary" onClick={toggleCart}>
+                Finalizar compra
+              </Link>
+            <button onClick={removeCart} className="btn btn-danger">Eliminar carrito</button>
+          </div>
         </>
       )}
     </div>

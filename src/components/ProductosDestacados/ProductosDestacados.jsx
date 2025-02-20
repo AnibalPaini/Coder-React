@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProductosMasVendidos } from "../../mock";
+/* import { getProductosMasVendidos } from "../../mock"; */
+import { db } from "../../services/config.js";
 import "../../App.css";
+import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 
 const ProductosDestacados = () => {
   const [productos, setProductos] = useState([]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     const fetchProductos = async () => {
       try {
         const productosMasVendidos = await getProductosMasVendidos();
@@ -16,7 +18,27 @@ const ProductosDestacados = () => {
       }
     };
     fetchProductos();
-  }, []);
+  }, []); */
+
+  useEffect(()=>{
+    const fetchProductos = async () => {
+      try {
+        let productosMasVendidos = collection(db, "productos");
+        const consulta = query(productosMasVendidos, orderBy("ventas", "desc"), limit(4));
+        const listaProd= await getDocs(consulta)
+
+        const listaPrdodMasVendidos= listaProd.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProductos(listaPrdodMasVendidos)
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      }
+    };
+
+    fetchProductos();
+  },[])
 
   return (
     <main className="container-sm mt-5">

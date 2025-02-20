@@ -9,14 +9,12 @@ import "./App.css";
 import { CarritoProvider } from "./components/context/ContextoCarrito.jsx";
 import Contacto from "./components/Contacto/Contacto.jsx";
 import Cart from "./components/Cart/Cart.jsx";
-import { useEffect } from "react";
-import { getItem } from "./firebase.js";
+import Checkout from "./components/Checkout/Checkout.jsx";
+
+
 
 
 function App() {
-  useEffect(()=>{
-    getItem();
-  },[])
   return (
     <BrowserRouter>
       <CarritoProvider>
@@ -28,6 +26,7 @@ function App() {
             <Route path="/productos/:id" element={<ItemDetail />} /> 
             <Route path="/productos/categoria/:idCategoria" element={<ItemListContainer />} /> 
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
       </CarritoProvider>

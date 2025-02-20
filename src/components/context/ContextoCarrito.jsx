@@ -6,7 +6,8 @@ export const ContextoCarrito= createContext({
     cantidadTotal:0,
     isOpen:false,
     toggleCart: () => {},
-    img:""
+    img:"",
+    actualizarCantidad:()=>{}
 })
 
 export const CarritoProvider=({children})=>{
@@ -60,8 +61,25 @@ export const CarritoProvider=({children})=>{
         setIsCartOpen(!isCartOpen);
     };
 
+    const actualizarCantidad = (id, nuevaCantidad) => {
+        const producto = carrito.find(p => p.item.id === id);
+        if (!producto) return;
+
+        const diferencia = nuevaCantidad - producto.cantidad;
+        const actualizarCarrito = carrito.map(p =>
+            p.item.id === id ? { ...p, cantidad: nuevaCantidad } : p
+        );
+
+        setCarrito(actualizarCarrito);
+        setCantidadTotal(prev => prev + diferencia);
+        setTotal(prev => prev + (producto.item.precio * diferencia));
+    };
+
+
+      
+
     return(
-        <ContextoCarrito.Provider value={{carrito, total, cantidadTotal,addToCart,deleteItem,removeCart, isCartOpen, toggleCart}}>
+        <ContextoCarrito.Provider value={{carrito, total, cantidadTotal,addToCart,deleteItem,removeCart, isCartOpen, toggleCart, actualizarCantidad}}>
             {children}
         </ContextoCarrito.Provider>
     )
