@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-/* import { getProductosMasVendidos } from "../../mock"; */
 import { db } from "../../services/config.js";
 import "../../App.css";
 import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 
 const ProductosDestacados = () => {
   const [productos, setProductos] = useState([]);
-
-/*   useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const productosMasVendidos = await getProductosMasVendidos();
-        setProductos(productosMasVendidos);
-      } catch (error) {
-        console.error("Error al obtener productos:", error);
-      }
-    };
-    fetchProductos();
-  }, []); */
 
   useEffect(()=>{
     const fetchProductos = async () => {

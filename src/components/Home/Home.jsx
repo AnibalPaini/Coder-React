@@ -3,7 +3,6 @@ import '../../App.css'
 import slide1 from "../../utiles/img/slide-1.png";
 import slide2 from "../../utiles/img/slide-2.png";
 import ProductosDestacados from "../ProductosDestacados/ProductosDestacados";
-import { getProductosMasVendidos } from "../../mock";
 
 const Home = () => {
 

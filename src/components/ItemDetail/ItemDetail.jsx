@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-/* import { getProductos } from '../../mock'; */
 import Count from '../Count/Count';
 import "../../app.css";
 import { ContextoCarrito } from '../context/ContextoCarrito';
@@ -25,16 +24,6 @@ const ItemDetail = () => {
       })
       .catch(error=>console.log(error))
   },[id])
-
-/*useEffect(() => {
-    getProductos()
-    .then((productos) => {
-      const productoEncontrado = productos.find(p => p.id === parseInt(id));
-      setProducto(productoEncontrado);
-    })
-    .catch(error => console.log(error));
-  }, [id]); */
-
   if (!producto) return <p>Cargando...</p>; 
 
   return (
