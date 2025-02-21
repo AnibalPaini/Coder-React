@@ -10,6 +10,7 @@ import { CarritoProvider } from "./components/context/ContextoCarrito.jsx";
 import Contacto from "./components/Contacto/Contacto.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 import Checkout from "./components/Checkout/Checkout.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

@@ -5,10 +5,12 @@ import { useParams } from "react-router-dom";
 import NavbarFilter from "../NavbarFilter/NavbarFilter.jsx";
 import { db } from "../../services/config.js";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import Loader from "../../Loader/Loader.jsx";
 
 function ItemListContainer({}) {
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
+  const [loading, setLoading]=useState(true)
 
   //Filtros
   const [precioMinimo, setPrecioMinimo] = useState();
@@ -33,6 +35,7 @@ function ItemListContainer({}) {
   }, []);
 
   useEffect(() => {
+    setLoading(true)
     const fetchProductos = async () => {
       try {
         let filtros = collection(db, "productos");
@@ -79,28 +82,13 @@ function ItemListContainer({}) {
         setProductos(nuevosProductos);
       } catch (error) {
         console.error("Error al obtener productos:", error);
+      }finally{
+        setLoading(false)
       }
     };
 
     fetchProductos();
   }, [idCategoria, precioMinimo, equipo, orden]);
-
-  /*   useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const productosData = idCategoria
-          ? await getProductosByCategory(idCategoria, precioMinimo, equipo, orden)
-          : await getProductos(precioMinimo, equipo, orden);
-  
-        console.log("Productos obtenidos:", productosData); 
-        setProductos(productosData);
-      } catch (error) {
-        console.error("Error al obtener productos:", error);
-      }
-    };
-  
-    fetchProductos();
-  }, [idCategoria, precioMinimo, equipo, orden]); */
 
   return (
     <>
@@ -144,10 +132,10 @@ function ItemListContainer({}) {
           </div>
         </div>
         <div className="container">
-          {productos.length > 0 ? (
-            <ItemList productos={productos} />
+          {loading ? (
+             <Loader/>
           ) : (
-            <p>Cargando productos...</p>
+            <ItemList productos={productos} />
           )}
         </div>
       </main>

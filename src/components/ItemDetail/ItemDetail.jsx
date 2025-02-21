@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Count from '../Count/Count';
 import "../../app.css";
-import { ContextoCarrito } from '../context/ContextoCarrito';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {db} from "../../services/config.js"
 import {getDoc, doc} from "firebase/firestore";
+import Loader from '../../Loader/Loader';
 
 const ItemDetail = () => {
   const { id } = useParams(); 
   const [producto, setProducto] = useState(null);
+  const [loading, setLoading]=useState(true)
 
-  const {addToCart}= useContext(ContextoCarrito)
-  
   useEffect(()=>{
+    setLoading(true)
     const nuevoDoc = doc(db,"productos",id)
     getDoc(nuevoDoc)
       .then(res=>{
@@ -23,8 +22,9 @@ const ItemDetail = () => {
         setProducto(nuevoProducto);
       })
       .catch(error=>console.log(error))
+      .finally(()=>setLoading(false))
   },[id])
-  if (!producto) return <p>Cargando...</p>; 
+  if (loading) return <Loader/>; 
 
   return (
     <div className="container mt-5">
